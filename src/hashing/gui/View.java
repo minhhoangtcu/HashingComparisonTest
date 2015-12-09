@@ -3,6 +3,7 @@ package hashing.gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import hashing.reader.TemplateReader;
+import hashing.reader.TemplateReader.Template;
 import hashing.resolutionMethods.HashingResolutionMethod;
 import net.miginfocom.swing.MigLayout;
 
@@ -47,6 +50,11 @@ public class View extends JFrame {
 		
 		paneHTMLOutput = new JTextPane();
 		paneHTMLOutput.setContentType("text/html");
+		try {
+			paneHTMLOutput.setText(TemplateReader.read(Template.WELCOME_PAGE));
+		} catch (IOException e) {
+			paneHTMLOutput.setText("file 'WelcomeScreen.html' is missing in the templates folder.\n Please resolve for the program to work normally");
+		}
 		scrollPane.setViewportView(paneHTMLOutput);
 		
 		/*
