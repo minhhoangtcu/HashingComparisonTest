@@ -2,6 +2,7 @@ package hashing.gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -24,15 +25,12 @@ public class View extends JFrame {
 	private JLabel lblFeedBack;
 	private JLabel lblFile;
 	private JTextPane paneHTMLOutput;
-	private Control control;
 	private JComboBox<String> comboBoxCollisionMethod;
 
 	/**
 	 * Create the frame.
 	 */
 	public View(Control control) {
-		this.control = control;
-		
 		setTitle("Hasing Collisions Algorithms Comparision - Minh Hoang");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 600);
@@ -41,6 +39,9 @@ public class View extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[30%][20%][50%]", "[90%][10%]"));
 		
+		/*
+		 * Output section
+		 */
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, "cell 0 0 3 1,grow");
 		
@@ -48,6 +49,9 @@ public class View extends JFrame {
 		paneHTMLOutput.setContentType("text/html");
 		scrollPane.setViewportView(paneHTMLOutput);
 		
+		/*
+		 * Input section
+		 */
 		JPanel panelInput = new JPanel();
 		contentPane.add(panelInput, "cell 0 1 2 1,grow");
 		panelInput.setLayout(new MigLayout("", "[33%][33%,grow][33%]", "[50%][50%,grow]"));
@@ -72,6 +76,9 @@ public class View extends JFrame {
 		btnChooseFile.setBackground(Color.WHITE);
 		panelInput.add(btnChooseFile, "cell 1 1,growx");
 		
+		/*
+		 * Feedback section
+		 */
 		JPanel panelFeedback = new JPanel();
 		contentPane.add(panelFeedback, "cell 2 1,grow");
 		panelFeedback.setLayout(new MigLayout("", "[100%]", "[50%][50%]"));
@@ -87,4 +94,55 @@ public class View extends JFrame {
 		lblFile.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		panelFeedback.add(lblFile, "cell 0 1,alignx right,growy");
 	}
+
+	/*
+	 * Add Listeners to interactive elements
+	 */
+	public void addBtnChooseFileListener(ActionListener listener) {
+		btnChooseFile.addActionListener(listener);
+	}
+	public void addBtnSearchListener(ActionListener listener) {
+		btnSearch.addActionListener(listener);
+	}
+	
+	/*
+	 * Change text of display elements
+	 */
+	public void setLblFeedBack(String text) {
+		lblFeedBack.setText(text);
+	}
+	public void setLblFile(String text) {
+		lblFile.setText(text);
+	}
+	public void setPaneHTMLOutput(String text) {
+		paneHTMLOutput.setText(text);
+	}
+	
+	/*
+	 * Turn visibility of elements on or off
+	 */
+	public void turnOnLblFeedBack() {
+		lblFeedBack.setVisible(true);
+	}
+	public void turnOffLblFeedBack() {
+		lblFeedBack.setVisible(false);
+	}
+	public void turnOnLblFile() {
+		lblFile.setVisible(true);
+	}
+	public void turnOffLblFile() {
+		lblFile.setVisible(false);
+	}
+	public void turnOnHashingResolutionMethodAndSearchButton() {
+		comboBoxCollisionMethod.setEnabled(true);
+		btnSearch.setEnabled(true);
+	}
+	
+	/*
+	 * Get selection from data driven elements
+	 */
+	public HashingResolutionMethod getChoosenHasingResolutionMethod() {
+		return HashingResolutionMethod.values()[comboBoxCollisionMethod.getSelectedIndex()];
+	}
+		
 }
