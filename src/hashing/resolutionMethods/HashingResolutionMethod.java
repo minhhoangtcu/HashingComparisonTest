@@ -1,4 +1,4 @@
-package hasing.resolutionMethods;
+package hashing.resolutionMethods;
 
 public enum HashingResolutionMethod {
 	LINEAR_PROBING("Linear Probing"),

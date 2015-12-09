@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-import hasing.resolutionMethods.HashingResolutionMethod;
+import hashing.resolutionMethods.HashingResolutionMethod;
 import net.miginfocom.swing.MigLayout;
 
 public class View extends JFrame {
