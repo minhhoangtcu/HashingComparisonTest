@@ -1,8 +1,8 @@
 package hashing.gui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -10,22 +10,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+
+import hasing.resolutionMethods.HashingResolutionMethod;
 import net.miginfocom.swing.MigLayout;
 
 public class View extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldSize;
 	private JButton btnChooseFile;
-	private JButton btnSort;
-	private JComboBox<String> list;
+	private JButton btnSearch;
 	private JLabel lblFeedBack;
 	private JLabel lblFile;
 	private JTextPane paneHTMLOutput;
 	private Control control;
+	private JComboBox<String> comboBoxCollisionMethod;
 
 	/**
 	 * Create the frame.
@@ -52,30 +52,25 @@ public class View extends JFrame {
 		contentPane.add(panelInput, "cell 0 1 2 1,grow");
 		panelInput.setLayout(new MigLayout("", "[33%][33%,grow][33%]", "[50%][50%,grow]"));
 		
-		JLabel lblSortingSize = new JLabel("Collision Handling Method");
-		panelInput.add(lblSortingSize, "cell 0 0,alignx trailing");
+		JLabel lblCollisionMethod = new JLabel("Collision Resolution Method:");
+		panelInput.add(lblCollisionMethod, "cell 0 0,alignx trailing");
 		
-		textFieldSize = new JTextField();
-		textFieldSize.setEditable(false);
-		panelInput.add(textFieldSize, "cell 1 0,growx");
-		textFieldSize.setColumns(10);
+		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(HashingResolutionMethod.getAllNames());
+		comboBoxCollisionMethod = new JComboBox<String>(comboModel);
+		comboBoxCollisionMethod.setEnabled(false);
+		panelInput.add(comboBoxCollisionMethod, "cell 1 0,growx");
 		
-		btnSort = new JButton("Sort");
-		btnSort.setEnabled(false);
-		btnSort.setBackground(Color.WHITE);
-		panelInput.add(btnSort, "cell 2 0,grow");
+		btnSearch = new JButton("Search");
+		btnSearch.setEnabled(false);
+		btnSearch.setBackground(Color.WHITE);
+		panelInput.add(btnSearch, "cell 2 0 1 2,growx");
 		
-		JLabel lblSortingAlgorithm = new JLabel("Sorting Algorithm");
-		panelInput.add(lblSortingAlgorithm, "cell 0 1,alignx trailing");
+		JLabel lblAnalyzeKey = new JLabel("Analyze from Keys:");
+		panelInput.add(lblAnalyzeKey, "cell 0 1,alignx trailing");
 		
-		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>();
-		list = new JComboBox<String>(comboModel);
-		list.setEnabled(false);
-		panelInput.add(list, "cell 1 1,grow");
-		
-		btnChooseFile = new JButton("Choose File");
+		btnChooseFile = new JButton("Choose Keys");
 		btnChooseFile.setBackground(Color.WHITE);
-		panelInput.add(btnChooseFile, "cell 2 1,growx");
+		panelInput.add(btnChooseFile, "cell 1 1,growx");
 		
 		JPanel panelFeedback = new JPanel();
 		contentPane.add(panelFeedback, "cell 2 1,grow");
@@ -87,52 +82,9 @@ public class View extends JFrame {
 		lblFeedBack.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panelFeedback.add(lblFeedBack, "cell 0 0,alignx center,growy");
 		
-		lblFile = new JLabel("please choose a file");
+		lblFile = new JLabel("please choose a set of keys to search in the hash table");
 		lblFile.setVisible(false);
 		lblFile.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		panelFeedback.add(lblFile, "cell 0 1,alignx right,growy");
-	}
-
-	public JButton getBtnChooseFile() {
-		return btnChooseFile;
-	}
-	public JButton getBtnSort() {
-		return btnSort;
-	}
-	public void enableInputs() {
-		textFieldSize.setEditable(true);
-		list.setEnabled(true);
-		btnSort.setEnabled(true);
-	}
-	public int getTextFieldSize() throws NumberFormatException {
-		return Integer.parseInt(textFieldSize.getText());
-	}
-	public boolean isSizeValid() {
-		String text = textFieldSize.getText();
-		if (text.isEmpty()) {
-			return false;
-		} else {
-			try {
-				Integer.parseInt(text);
-				return true;
-			} catch (NumberFormatException e) {
-				return false;
-			}
-		}
-	}
-	public int getSelectedSortingMethodIndex() {
-		return list.getSelectedIndex();
-	}
-	public void setLblFeedBack(String text) {
-		lblFeedBack.setVisible(true);
-		lblFeedBack.setText(text);
-	}
-	
-	public void setLblFile(String text) {
-		lblFile.setVisible(true);
-		lblFile.setText(text);;
-	}
-	public void setPaneHTMLOutput(String text) {
-		paneHTMLOutput.setText(text);
 	}
 }
