@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import hashing.hashTables.PackingDensity;
 import hashing.reader.TemplateReader;
 import hashing.reader.TemplateReader.Template;
 import hashing.resolutionMethods.HashingResolutionMethod;
@@ -29,6 +30,8 @@ public class View extends JFrame {
 	private JLabel lblFile;
 	private JTextPane paneHTMLOutput;
 	private JComboBox<String> comboBoxCollisionMethod;
+	private JLabel lblPackingDensity;
+	private JComboBox<String> comboBoxPackingDensity;
 
 	/**
 	 * Create the frame.
@@ -62,27 +65,33 @@ public class View extends JFrame {
 		 */
 		JPanel panelInput = new JPanel();
 		contentPane.add(panelInput, "cell 0 1 2 1,grow");
-		panelInput.setLayout(new MigLayout("", "[33%][33%,grow][33%]", "[50%][50%,grow]"));
+		panelInput.setLayout(new MigLayout("", "[33%][33%,grow][33%]", "[33%][33%][33%]"));
 		
 		JLabel lblCollisionMethod = new JLabel("Collision Resolution Method:");
-		panelInput.add(lblCollisionMethod, "cell 0 0,alignx trailing");
+		panelInput.add(lblCollisionMethod, "cell 0 0,alignx right");
 		
-		DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<String>(HashingResolutionMethod.getAllNames());
-		comboBoxCollisionMethod = new JComboBox<String>(comboModel);
+		comboBoxCollisionMethod = new JComboBox<String>(new DefaultComboBoxModel<String>(HashingResolutionMethod.getAllNames()));
 		comboBoxCollisionMethod.setEnabled(false);
 		panelInput.add(comboBoxCollisionMethod, "cell 1 0,growx");
 		
 		btnSearch = new JButton("Search");
 		btnSearch.setEnabled(false);
 		btnSearch.setBackground(Color.WHITE);
-		panelInput.add(btnSearch, "cell 2 0 1 2,growx");
+		panelInput.add(btnSearch, "cell 2 0 1 3,growx");
+		
+		lblPackingDensity = new JLabel("Packing Density:");
+		panelInput.add(lblPackingDensity, "cell 0 1,alignx trailing");
+		
+		comboBoxPackingDensity = new JComboBox<String>(new DefaultComboBoxModel<String>(PackingDensity.getAllNames()));
+		comboBoxPackingDensity.setEnabled(false);
+		panelInput.add(comboBoxPackingDensity, "cell 1 1,growx");
 		
 		JLabel lblAnalyzeKey = new JLabel("Analyze from Keys:");
-		panelInput.add(lblAnalyzeKey, "cell 0 1,alignx trailing");
+		panelInput.add(lblAnalyzeKey, "cell 0 2,alignx trailing");
 		
 		btnChooseFile = new JButton("Choose Keys");
 		btnChooseFile.setBackground(Color.WHITE);
-		panelInput.add(btnChooseFile, "cell 1 1,growx");
+		panelInput.add(btnChooseFile, "cell 1 2,growx");
 		
 		/*
 		 * Feedback section
