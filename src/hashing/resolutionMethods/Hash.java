@@ -14,7 +14,7 @@ public class Hash {
 	 * @throws IllegalArgumentException
 	 *             there are more or less than 4 chars
 	 */
-	public static int divisionHash(String key) {
+	public static int divisionHash(String key) throws IllegalArgumentException {
 		if (key.trim().length() != key.length())
 			throw new IllegalArgumentException("Invalid key. Space before/after key.");
 		else {
