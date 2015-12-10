@@ -1,7 +1,5 @@
 package hashing.hashTables;
 
-import hashing.resolutionMethods.Hash;
-
 /**
  * <p>
  * This hash table use linear probing algorithm as a collision resolution
@@ -12,20 +10,10 @@ import hashing.resolutionMethods.Hash;
  * 
  * @author minhhoang
  */
-public class LinearProbingHashTable {
-
-	private int numberOfPairs;
-	private int sizeOfTable;
-	private String[] values;
+public class LinearProbingHashTable extends HashTable {
 
 	public LinearProbingHashTable(int sizeOfTable) {
-		this.sizeOfTable = sizeOfTable;
-		numberOfPairs = 0;
-		values = new String[sizeOfTable];
-	}
-
-	public int hash(String key) {
-		return Hash.divisionHash(key);
+		super(sizeOfTable);
 	}
 
 	/**
@@ -64,7 +52,7 @@ public class LinearProbingHashTable {
 		KeyComparator tempComparator = new KeyComparator();
 		while (values[pointer] != null && !tempComparator.isEquals(values[pointer], key)) {
 			pointer = (pointer + 1) % sizeOfTable;
-			if (pointer == index) {
+			if (pointer == index) { // search failed
 				return tempComparator.getNumberOfCompares();
 			}
 		}
