@@ -157,6 +157,7 @@ public class View extends JFrame {
 	}
 	public void turnOnHashingResolutionMethodAndSearchButton() {
 		comboBoxCollisionMethod.setEnabled(true);
+		comboBoxPackingDensity.setEnabled(true);
 		btnSearch.setEnabled(true);
 	}
 	
