@@ -19,5 +19,12 @@ public class HashTest {
 		// 0 in utf-8 is 48
 		assertNotEquals((48<<16)+(48<<8)+48, Hash.divisionHash("0000"));
 	}
+	
+	@Test
+	public void matchingHashTest() {
+		assertEquals(Hash.hornersRule("AAAA"), Hash.divisionHash("AAAA"));
+		assertEquals(Hash.hornersRule("ZMTJ"), Hash.divisionHash("ZMTJ"));
+		assertEquals(Hash.hornersRule("Z8TS"), Hash.divisionHash("Z8TS"));
+	}
 
 }

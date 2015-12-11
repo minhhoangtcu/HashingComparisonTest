@@ -21,10 +21,14 @@ public class Hash {
 			int output = 0;
 			for (int i = 0; i < key.length(); i++) {
 				int shift = (key.length() - 1 - i) * 8;
-				output += (int) key.charAt(0) << shift;
+				output += (int) key.charAt(i) << shift;
 			}
 			return output;
 		}
+	}
+	
+	public static int hornersRule(String key) {
+		return (int) ((((((int) key.charAt(0)<<8) + (int)key.charAt(1))<<8) + (int) key.charAt(2)) << 8) + (int) key.charAt(3);
 	}
 
 }
