@@ -53,35 +53,6 @@ public class WelcomePage {
 		return input;
 	}
 	
-//	public static void printOutOneMethod(Model model, HashTable table, PackingDensity density) throws TableFullException, IOException {
-//		int POPULATE = 200;
-//		
-//		String[] randomKeys = populateArray(model.getInsertingKeys(), POPULATE);
-//		long tStart = System.currentTimeMillis();
-//		for (String key : randomKeys) {
-//			table.put(key);
-//		}
-//		long insertingTime = (long) System.currentTimeMillis() - tStart;
-//
-//		String[] presentKeys = populateArray(AlphanumericReader.getKeys(AlphanumericReader.PRESENT_KEYS), POPULATE);
-//		tStart = System.currentTimeMillis();
-//		for (String key : presentKeys) {
-//			table.search(key);
-//		}
-//		long searchingMissTime = (long) System.currentTimeMillis() - tStart;
-//
-//		String[] missingKeys = populateArray(AlphanumericReader.getKeys(AlphanumericReader.MISSING_KEYS), POPULATE);
-//		tStart = System.currentTimeMillis();
-//		for (String key : missingKeys) {
-//			table.search(key);
-//		}
-//		long searchingPresentTime = (long) System.currentTimeMillis() - tStart;
-//		
-//		System.out.println(table.getMethod().getName() + density.getName() + "for 1 mil Inserts and 1 hund thouds Searches Miss/Present");
-//		System.out.println(insertingTime);
-//		System.out.println(searchingMissTime);
-//		System.out.println(searchingPresentTime);
-//	}
 	
 	public static String fillUpOneMethod(Model model, String input, HashTable table, PackingDensity density)
 			throws IOException, TableFullException {
@@ -116,25 +87,25 @@ public class WelcomePage {
 				table.put(key);
 			}
 		}
-		long insertingTime = (long) System.currentTimeMillis() - tStart;
+		long insertingTime = System.currentTimeMillis() - tStart;
 
-		String[] presentKeys = model.getSearchingMissingKeys();
-		tStart = System.currentTimeMillis();
-		for (int i = 0; i < populate; i++) {
-			for (String key : presentKeys) {
-				table.search(key);
-			}
-		}
-		long searchingMissTime = (long) System.currentTimeMillis() - tStart;
-
-		String[] missingKeys = model.getSearchingPresentKeys();
+		String[] missingKeys = model.getSearchingMissingKeys();
 		tStart = System.currentTimeMillis();
 		for (int i = 0; i < populate; i++) {
 			for (String key : missingKeys) {
 				table.search(key);
 			}
 		}
-		long searchingPresentTime = (long) System.currentTimeMillis() - tStart;
+		long searchingMissTime = System.currentTimeMillis() - tStart;
+
+		String[] presentKeys = model.getSearchingPresentKeys();
+		tStart = System.currentTimeMillis();
+		for (int i = 0; i < populate; i++) {
+			for (String key : presentKeys) {
+				table.search(key);
+			}
+		}
+		long searchingPresentTime = System.currentTimeMillis() - tStart;
 
 		return WelcomePage.fillUpOneRowTime(input, table.getMethod(), density, insertingTime, searchingMissTime,
 				searchingPresentTime);

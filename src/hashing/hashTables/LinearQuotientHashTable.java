@@ -29,7 +29,7 @@ public class LinearQuotientHashTable extends HashTable {
 			quotient = 1;
 		while (values[pointer] != null && !values[pointer].equals(key)) {
 			i++;
-			if (i == sizeOfTable - 1)
+			if (i == sizeOfTable-1)
 				throw new TableFullException();
 			pointer = (index + i * quotient) % sizeOfTable;
 			collisions++;
