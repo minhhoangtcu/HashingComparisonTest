@@ -24,12 +24,12 @@ public class Model {
 			insertingKeys = AlphanumericReader.getKeys(AlphanumericReader.RANDOM);
 			searchingMissingKeys = AlphanumericReader.getKeys(AlphanumericReader.MISSING_KEYS);
 			searchingPresentKeys = AlphanumericReader.getKeys(AlphanumericReader.PRESENT_KEYS);
-			generateStats();
+//			generateStats();
 		} catch (IOException e) {
 			System.err.println("MISSING FILES.");
 			control.alertMissingFiles();
-		} catch (TableFullException e) {
-			System.err.println("TABLE FULL.");
+//		} catch (TableFullException e) {
+//			System.err.println("TABLE FULL.");
 		}
 	}
 	
