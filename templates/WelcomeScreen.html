@@ -8,9 +8,33 @@
       color: white;
       background-color: purple;
     }
-
-    p, ul, ol{
+    
+    p,
+    ul,
+    ol {
       color: purple;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td,
+    table {
+      border: 1px solid black;
+    }
+
+    th {
+      height: 60px;
+    }
+
+    .data {
+      text-align: right;
+    }
+
+    .percentage {
+      text-align: center;
     }
   </style>
 </head>
@@ -48,6 +72,127 @@
     <li>All the text display of this program can be modified and access through the templates folder</li>
   </ul>
 
+  <h1>
+    Analysis
+  </h1>
+  <table>
+    <tr>
+      <th>
+        Collision Method
+      </th>
+      <th>
+        Packing Density
+      </th>
+      <th>
+        Average Collisions
+      </th>
+      <th>
+        Average Comparisons for Missing Keys
+      </th>
+      <th>
+        Average Comparisons for Present Keys
+      </th>
+    </tr>
+
+    <tr>
+      <td rowspan="2">
+        Linear Probing
+      </td>
+      <td class="percentage">
+        50%
+      </td>
+      <td class="data">
+        $lp50Collisions
+      </td>
+      <td class="data">
+        $lp50ComparisonsMissing
+      </td>
+      <td class="data">
+        $lp50ComparisonsPresent
+      </td>
+
+      <tr>
+        <td class="percentage">
+          90%
+        </td>
+        <td class="data">
+          $lp90Collisions
+        </td>
+        <td class="data">
+          $lp90ComparisonsMissing
+        </td>
+        <td class="data">
+          $lp90ComparisonsPresent
+        </td>
+      </tr>
+
+      <tr>
+        <td rowspan="2">
+          Quadratic Probing
+        </td>
+        <td class="percentage">
+          50%
+        </td>
+        <td class="data">
+          $qp50Collisions
+        </td>
+        <td class="data">
+          $qp50ComparisonsMissing
+        </td>
+        <td class="data">
+          $qp50ComparisonsPresent
+        </td>
+
+        <tr>
+          <td class="percentage">
+            90%
+          </td>
+          <td class="data">
+            $qp90Collisions
+          </td>
+          <td class="data">
+            $qp90ComparisonsMissing
+          </td>
+          <td class="data">
+            $qp90ComparisonsPresent
+          </td>
+        </tr>
+
+        <tr>
+          <td rowspan="2">
+            Linear Quotient
+          </td>
+          <td class="percentage">
+            50%
+          </td>
+          <td class="data">
+            $lq50Collisions
+          </td>
+          <td class="data">
+            $lq50ComparisonsMissing
+          </td>
+          <td class="data">
+            $lq50ComparisonsPresent
+          </td>
+
+          <tr>
+            <td class="percentage">
+              90%
+            </td>
+            <td class="data">
+              $lq90Collisions
+            </td>
+            <td class="data">
+              $lq90ComparisonsMissing
+            </td>
+            <td class="data">
+              $lq90ComparisonsPresent
+            </td>
+          </tr>
+
+        </tr>
+
+  </table>
 
 </body>
 
