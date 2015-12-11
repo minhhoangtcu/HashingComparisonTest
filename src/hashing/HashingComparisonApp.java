@@ -20,9 +20,11 @@ public class HashingComparisonApp {
 	}
 	
 	public HashingComparisonApp() throws IOException, TableFullException {
-		model = new Model(control);
-		view = new View(control);
+		model = new Model();
+		view = new View();
 		control = new Control(model, view);
-		view.setPaneHTMLOutput(WelcomePage.fillAll());
+		model.setControl(control);
+		view.setControl(control);
+		view.setPaneHTMLOutput(WelcomePage.fillAll(model));
 	}
 }

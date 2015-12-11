@@ -32,11 +32,12 @@ public class View extends JFrame {
 	private JComboBox<String> comboBoxCollisionMethod;
 	private JLabel lblPackingDensity;
 	private JComboBox<String> comboBoxPackingDensity;
+	private Control control;
 
 	/**
 	 * Create the frame.
 	 */
-	public View(Control control) {
+	public View() {
 		setTitle("Hasing Collisions Algorithms Comparision - Minh Hoang");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 600);
@@ -110,6 +111,10 @@ public class View extends JFrame {
 		lblFile.setVisible(false);
 		lblFile.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		panelFeedback.add(lblFile, "cell 0 1,alignx right,growy");
+	}
+
+	public void setControl(Control control) {
+		this.control = control;
 	}
 
 	/*

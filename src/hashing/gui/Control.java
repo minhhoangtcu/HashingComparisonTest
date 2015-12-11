@@ -13,7 +13,11 @@ public class Control {
 		this.model = model;
 		
 		view.addBtnChooseFileListener(new ChooseFileController(model, view));
-		view.addBtnSearchListener(new SearchController());
+		view.addBtnSearchListener(new SearchController(model, view));
+	}
+	
+	public void alertMissingFiles() {
+		view.setPaneHTMLOutput("FILE NOT FOUND. PLEASE REINSTALL THE PROGRAM");
 	}
 
 }
