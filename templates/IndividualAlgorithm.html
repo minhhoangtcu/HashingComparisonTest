@@ -11,29 +11,48 @@
     h2 {
       color: purple;
     }
+
+    table {
+      margin-left: 20px;
+    }
   </style>
 </head>
 
 <body>
   <h1>$name Analysis - Density $density</h1>
+
   <h2>Putting keys into the table</h2>
-  <ul>
-    <li>Total Number of Collisions: $totalCollisions</li>
-    <li>Total Number of Keys: $totalKeys</li>
-    <li>Average Number of Collisions: $averageCollisions</li>
-  </ul>
-  <h2>Searching for Missing Key: </h2>
-  <ul>
-    <li>Total Number of Compares: $totalComparesMissing</li>
-    <li>Total Number of Keys searched: $totalSearchsMissing</li>
-    <li>Average Number of Compares: $averageComparesMissing</li>
-  </ul>
-  <h2>Searching for Present Key: </h2>
-  <ul>
-    <li>Total Number of Compares: $totalComparesPresent</li>
-    <li>Total Number of Keys searched: $totalSearchsPresent</li>
-    <li>Average Number of Compares: $averageComparesPresent</li>
-  </ul>
+  <table>
+    <tr>
+      <td> Total Number of Collisions: </td>
+      <td> $totalCollisions </td>
+    </tr>
+    <tr>
+      <td> Total Number of Keys: </td>
+      <td> $totalKeys </td>
+    </tr>
+    <tr>
+      <td> Average Number of Collisions:</td>
+      <td> $averageCollisions</td>
+    </tr>
+  </table>
+
+  <h2>Searching for provided keys: </h2>
+  <table>
+    <tr>
+      <td>Total Number of Compares: </td>
+      <td>$totalCompares</td>
+    </tr>
+    <tr>
+      <td>Total Number of Keys searched: </td>
+      <td>$totalSearchs</td>
+    </tr>
+    <tr>
+      <td>Average Number of Compares: </td>
+      <td>$averageCompares</td>
+    </tr>
+  </table>
+
 </body>
 
 </html>
