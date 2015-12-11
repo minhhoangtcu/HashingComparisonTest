@@ -38,7 +38,7 @@ public class WelcomePage {
 	}
 	
 	public static String fillUpOneMethod(Model model, String input, HashTable table, PackingDensity density) throws IOException, TableFullException {
-		int POPULATE = 100;
+		int POPULATE = 200;
 		
 		String[] randomKeys = populateArray(model.getInsertingKeys(), POPULATE);
 		int totalCollisions = 0;
