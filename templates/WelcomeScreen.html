@@ -8,7 +8,7 @@
       color: white;
       background-color: purple;
     }
-    
+
     p,
     ul,
     ol {
@@ -27,6 +27,7 @@
 
     th {
       height: 60px;
+      width: 100px;
     }
 
     .data {
@@ -191,7 +192,57 @@
           </tr>
 
         </tr>
+  </table>
 
+  <br>
+
+  <table>
+    <tr>
+      <th>Collision Method</th>
+      <th>Packing Density</th>
+      <th>Time to insert 5000 keys (ms)</th>
+      <th>Time to search 500 missing keys (ms)</th>
+      <th>Time to search 500 present keys (ms)</th>
+    </tr>
+    <tr>
+      <td rowspan="2">Linear Probing</td>
+      <td class="percentage">50%</td>
+      <td class="data">$lp50TimeInsert</td>
+      <td class="data">$lp50TimeSearchMissing</td>
+      <td class="data">$lp50TimeSearchPresent</td>
+    </tr>
+    <tr>
+      <td class="percentage">90%</td>
+      <td class="data">$lp90TimeInsert</td>
+      <td class="data">$lp90TimeSearchMissing</td>
+      <td class="data">$lp90TimeSearchPresent</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Quadratic Probing</td>
+      <td class="percentage">50%</td>
+      <td class="data">$qp50TimeInsert</td>
+      <td class="data">$qp50TimeSearchMissing</td>
+      <td class="data">$qp50TimeSearchPresent</td>
+    </tr>
+    <tr>
+      <td class="percentage">90%</td>
+      <td class="data">$qp90TimeInsert</td>
+      <td class="data">$qp90TimeSearchMissing</td>
+      <td class="data">$qp90TimeSearchPresent</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Linear Quotient</td>
+      <td class="percentage">50%</td>
+      <<td class="data">$lq50TimeInsert</td>
+        <td class="data">$lq50TimeSearchMissing</td>
+        <td class="data">$lq50TimeSearchPresent</td>
+    </tr>
+    <tr>
+      <td class="percentage">90%</td>
+      <td class="data">$lq90TimeInsert</td>
+      <td class="data">$lq90TimeSearchMissing</td>
+      <td class="data">$lq90TimeSearchPresent</td>
+    </tr>
   </table>
 
 </body>
