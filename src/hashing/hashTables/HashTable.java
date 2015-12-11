@@ -1,15 +1,18 @@
 package hashing.hashTables;
 
 import hashing.resolutionMethods.Hash;
+import hashing.resolutionMethods.HashingResolutionMethod;
 
 public abstract class HashTable {
 	
 	protected int sizeOfTable;
 	protected int numberOfPairs;
 	protected String[] values;
+	protected HashingResolutionMethod method;
 	
-	public HashTable(int sizeOfTable) {
+	public HashTable(int sizeOfTable, HashingResolutionMethod method) {
 		this.sizeOfTable = sizeOfTable;
+		this.method = method;
 		numberOfPairs = 0;
 		values = new String[sizeOfTable];
 	}

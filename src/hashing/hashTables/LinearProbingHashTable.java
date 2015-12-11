@@ -1,5 +1,7 @@
 package hashing.hashTables;
 
+import hashing.resolutionMethods.HashingResolutionMethod;
+
 /**
  * <p>
  * This hash table use linear probing algorithm as a collision resolution
@@ -13,7 +15,7 @@ package hashing.hashTables;
 public class LinearProbingHashTable extends HashTable {
 
 	public LinearProbingHashTable(int sizeOfTable) {
-		super(sizeOfTable);
+		super(sizeOfTable, HashingResolutionMethod.LINEAR_PROBING);
 	}
 
 	/**

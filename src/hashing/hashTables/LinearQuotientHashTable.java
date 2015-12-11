@@ -1,9 +1,11 @@
 package hashing.hashTables;
 
-public class QuotientProbingHashTable extends HashTable {
+import hashing.resolutionMethods.HashingResolutionMethod;
 
-	public QuotientProbingHashTable(int sizeOfTable) {
-		super(sizeOfTable);
+public class LinearQuotientHashTable extends HashTable {
+
+	public LinearQuotientHashTable(int sizeOfTable) {
+		super(sizeOfTable, HashingResolutionMethod.LINEAR_QUOTIENT);
 	}
 
 	/**

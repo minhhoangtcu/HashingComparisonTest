@@ -1,9 +1,11 @@
 package hashing.hashTables;
 
+import hashing.resolutionMethods.HashingResolutionMethod;
+
 public class QuadraticProbingHashTable extends HashTable {
 
 	public QuadraticProbingHashTable(int sizeOfTable) {
-		super(sizeOfTable);
+		super(sizeOfTable, HashingResolutionMethod.QUADRATIC_PROBING);
 	}
 
 	/**

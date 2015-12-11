@@ -148,7 +148,7 @@ public class HashTableTest {
 	
 	@Test
 	public void quoutientProbingTest1() throws TableFullException {
-		QuotientProbingHashTable table = new QuotientProbingHashTable(5);
+		LinearQuotientHashTable table = new LinearQuotientHashTable(5);
 
 		// Insert new keys
 		int collisions = table.put("0");
@@ -180,7 +180,7 @@ public class HashTableTest {
 	
 	@Test
 	public void quoutientProbingTest2() throws TableFullException {
-		QuotientProbingHashTable table = new QuotientProbingHashTable(5);
+		LinearQuotientHashTable table = new LinearQuotientHashTable(5);
 
 		// Insert new keys
 		int collisions = table.put("0");
