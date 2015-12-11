@@ -23,5 +23,7 @@ public abstract class HashTable {
 	
 	public abstract int put(String key) throws TableFullException;
 	public abstract int search(String key);
-	
+	public HashingResolutionMethod getMethod() {
+		return method;
+	}
 }

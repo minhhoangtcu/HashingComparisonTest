@@ -2,7 +2,13 @@ package hashing.gui.views;
 
 import java.io.IOException;
 
+import hashing.hashTables.HashTable;
+import hashing.hashTables.LinearProbingHashTable;
+import hashing.hashTables.LinearQuotientHashTable;
 import hashing.hashTables.PackingDensity;
+import hashing.hashTables.QuadraticProbingHashTable;
+import hashing.hashTables.TableFullException;
+import hashing.reader.AlphanumericReader;
 import hashing.reader.TemplateReader;
 import hashing.reader.TemplateReader.Template;
 import hashing.resolutionMethods.HashingResolutionMethod;
@@ -17,8 +23,45 @@ public class WelcomePage {
 	public static final String[] LINEAR_QUOTIENT_50_IDS = {"$lq50Collisions", "$lq50ComparisonsMissing", "$lq50ComparisonsPresent"};
 	public static final String[] LINEAR_QUOTIENT_90_IDS = {"$lq90Collisions", "$lq90ComparisonsMissing", "$lq90ComparisonsPresent"};
 	
-	public static String generateContent(HashingResolutionMethod method, PackingDensity density, double collisions, double comparesMissing, double comparesPresent) throws IOException {
+	public static String fillAll() throws IOException, TableFullException {
 		String input = TemplateReader.read(Template.WELCOME_PAGE);
+		for (PackingDensity density: PackingDensity.values()) {
+			LinearProbingHashTable linearTable = new LinearProbingHashTable(density.getSize());
+			QuadraticProbingHashTable quadTable = new QuadraticProbingHashTable(density.getSize());
+			LinearQuotientHashTable quotTable = new LinearQuotientHashTable(density.getSize());
+			input = fillUpOneMethod(input, linearTable, density);
+			input = fillUpOneMethod(input, quadTable, density);
+			input = fillUpOneMethod(input, quotTable, density);
+		}
+		return input;
+	}
+	
+	public static String fillUpOneMethod(String input, HashTable table, PackingDensity density) throws IOException, TableFullException {
+		String[] randomKeys = AlphanumericReader.getKeys(AlphanumericReader.RANDOM);
+		int totalCollisions = 0;
+		for (String key : randomKeys) {
+			totalCollisions += table.put(key);
+		}
+
+		String[] presentKeys = AlphanumericReader.getKeys(AlphanumericReader.PRESENT_KEYS);
+		int totalComparesPresent = 0;
+		for (String key : presentKeys) {
+			totalComparesPresent += table.search(key);
+		}
+
+		String[] missingKeys = AlphanumericReader.getKeys(AlphanumericReader.MISSING_KEYS);
+		int totalComparesMissing = 0;
+		for (String key : missingKeys) {
+			totalComparesMissing += table.search(key);
+		}
+
+		return WelcomePage.fillUpOneRow(input, table.getMethod(), density,
+				(double) totalCollisions / randomKeys.length,
+				(double) totalComparesMissing / missingKeys.length,
+				(double) totalComparesPresent / presentKeys.length);
+	}
+	
+	public static String fillUpOneRow(String input, HashingResolutionMethod method, PackingDensity density, double collisions, double comparesMissing, double comparesPresent) throws IOException {
 		String[] ids = new String[3];
 		
 		switch (method) {
