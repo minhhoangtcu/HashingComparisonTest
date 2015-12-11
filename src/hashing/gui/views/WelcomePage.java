@@ -26,19 +26,30 @@ public class WelcomePage {
 	
 	public static String fillAll(Model model) throws IOException, TableFullException {
 		String input = TemplateReader.read(Template.WELCOME_PAGE);
-		for (PackingDensity density: PackingDensity.values()) {
-			LinearProbingHashTable linearTable = new LinearProbingHashTable(density.getSize());
-			QuadraticProbingHashTable quadTable = new QuadraticProbingHashTable(density.getSize());
-			LinearQuotientHashTable quotTable = new LinearQuotientHashTable(density.getSize());
-			int populate = 200;
-			
-			input = fillUpOneMethod(model, input, linearTable, density);
-			input = fillUpOneMethodTime(populate, model, input, linearTable, density);
-			input = fillUpOneMethod(model, input, quadTable, density);
-			input = fillUpOneMethodTime(populate, model, input, quadTable, density);
-			input = fillUpOneMethod(model, input, quotTable, density);
-			input = fillUpOneMethodTime(populate, model, input, quotTable, density);
-		}
+
+		int populate = 200;
+
+		PackingDensity density = PackingDensity.FIFTY_PERCENT;
+		LinearProbingHashTable linearTable = new LinearProbingHashTable(density.getSize());
+		QuadraticProbingHashTable quadTable = new QuadraticProbingHashTable(density.getSize());
+		LinearQuotientHashTable quotTable = new LinearQuotientHashTable(density.getSize());
+		input = fillUpOneMethod(model, input, linearTable, density);
+		input = fillUpOneMethodTime(populate, model, input, linearTable, density);
+		input = fillUpOneMethod(model, input, quadTable, density);
+		input = fillUpOneMethodTime(populate, model, input, quadTable, density);
+		input = fillUpOneMethod(model, input, quotTable, density);
+		input = fillUpOneMethodTime(populate, model, input, quotTable, density);
+
+		density = PackingDensity.NINETY_PERCENT;
+		linearTable = new LinearProbingHashTable(density.getSize());
+		quadTable = new QuadraticProbingHashTable(density.getSize());
+		quotTable = new LinearQuotientHashTable(density.getSize());
+		input = fillUpOneMethod(model, input, linearTable, density);
+		input = fillUpOneMethodTime(populate, model, input, linearTable, density);
+		input = fillUpOneMethod(model, input, quadTable, density);
+		input = fillUpOneMethodTime(populate, model, input, quadTable, density);
+		input = fillUpOneMethod(model, input, quotTable, density);
+		input = fillUpOneMethodTime(populate, model, input, quotTable, density);
 		return input;
 	}
 	

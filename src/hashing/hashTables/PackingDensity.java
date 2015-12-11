@@ -3,7 +3,14 @@ package hashing.hashTables;
 public enum PackingDensity {
 	
 	NINETY_PERCENT("90%", 5591),
-	FIFTY_PERCENT("50%", 10007);
+	EIGHTY_PERCENT("80%", 6247),
+	SEVENTY_PERCENT("70%", 7151),
+	SIXTY_PERCENT("60%", 8297),
+	FIFTY_PERCENT("50%", 10007),
+	FOURTY_PERCENT("40%", 12503),
+	THRITY_PERCENT("30%", 16661),
+	TWENTY_PERCENT("20%", 25013),
+	TEN_PERCENT("10%", 50021);
 	
 	private String name;
 	private int size;
