@@ -166,5 +166,8 @@ public class View extends JFrame {
 	public HashingResolutionMethod getChoosenHasingResolutionMethod() {
 		return HashingResolutionMethod.values()[comboBoxCollisionMethod.getSelectedIndex()];
 	}
+	public PackingDensity getChoosenPackingDensity() {
+		return PackingDensity.values()[comboBoxPackingDensity.getSelectedIndex()];
+	}
 		
 }
