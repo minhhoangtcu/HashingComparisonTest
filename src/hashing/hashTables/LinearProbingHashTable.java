@@ -35,6 +35,7 @@ public class LinearProbingHashTable extends HashTable {
 				throw new TableFullException();
 			collisions++;
 		}
+//		collisions++; // enable this means show the number of probes it took to insert
 		values[pointer] = key;
 		numberOfPairs++;
 		return collisions;
