@@ -2,16 +2,21 @@ package hashing.hashTables;
 
 public enum PackingDensity {
 	
-	NINETY_PERCENT("90%"),
-	FIFTY_PERCENT("50%");
+	NINETY_PERCENT("90%", 5591),
+	FIFTY_PERCENT("50%", 10007);
 	
 	private String name;
+	private int size;
 	private PackingDensity() { }
-	private PackingDensity(String name) {
+	private PackingDensity(String name, int size) {
 		this.name = name;
+		this.size = size;
 	}
 	public String getName() {
 		return name;
+	}
+	public int getSize() {
+		return size;
 	}
 	public static String[] getAllNames() {
 		String[] output = new String[PackingDensity.values().length];
