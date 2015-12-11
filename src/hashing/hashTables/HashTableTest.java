@@ -145,4 +145,60 @@ public class HashTableTest {
 										// total: 2 compares
 		assertEquals(2, compares);
 	}
+	
+	@Test
+	public void quoutientProbingTest1() throws TableFullException {
+		QuotientProbingHashTable table = new QuotientProbingHashTable(5);
+
+		// Insert new keys
+		int collisions = table.put("0");
+		assertEquals(0, collisions);
+		collisions = table.put("1");
+		assertEquals(0, collisions);
+		collisions = table.put("2");
+		assertEquals(0, collisions);
+		collisions = table.put("3");
+		assertEquals(0, collisions);
+		collisions = table.put("4");
+		assertEquals(0, collisions);
+
+		// Search for keys
+		int compares = table.search("0");
+		assertEquals(1, compares);
+		compares = table.search("1");
+		assertEquals(1, compares);
+		compares = table.search("2");
+		assertEquals(1, compares);
+		compares = table.search("3");
+		assertEquals(1, compares);
+		compares = table.search("4");
+		assertEquals(1, compares);
+		compares = table.search("5");
+		assertEquals(4, compares);
+
+	}
+	
+	@Test
+	public void quoutientProbingTest2() throws TableFullException {
+		QuotientProbingHashTable table = new QuotientProbingHashTable(5);
+
+		// Insert new keys
+		int collisions = table.put("0");
+		assertEquals(0, collisions);
+		collisions = table.put("1");
+		assertEquals(0, collisions);
+		collisions = table.put("2");
+		assertEquals(0, collisions);
+		collisions = table.put("4");
+		assertEquals(0, collisions);
+
+		// Search for keys
+		int compares = table.search("7"); // 7 hash to 0.
+		assertEquals(1, compares);
+		compares = table.search("@"); // @ hash to 4.
+		assertEquals(1, compares);
+		compares = table.search("9"); // 9 hash to 2.
+		assertEquals(1, compares);
+	}
+
 }
