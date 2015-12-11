@@ -28,6 +28,9 @@ public class ChooseFileController extends Controller implements ActionListener {
 			String path = selectedFile.getAbsolutePath();
 			setKeysOnModel(path);
 			view.setLblFile(selectedFile.getName());
+			view.turnOnLblFile();
+			view.setLblFeedBack("Successfully loaded file.");
+			view.turnOnLblFeedBack();
 			view.turnOnHashingResolutionMethodAndSearchButton();
 		}
 	}
@@ -38,6 +41,7 @@ public class ChooseFileController extends Controller implements ActionListener {
 			output = AlphanumericReader.getKeys(path);
 			model.setSearchingKeys(output);
 		} catch (IOException e) {
+			view.turnOnLblFeedBack();
 			view.setLblFeedBack("File not found!");
 		}
 	}

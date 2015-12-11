@@ -35,9 +35,13 @@ public class SearchController extends Controller implements ActionListener {
 			}
 			
 			view.setPaneHTMLOutput(IndividualPage.fillAll(method, density, totalCollisions, model.getInsertingKeys().length, totalCompares, model.getSearchingKeys().length));
+			view.setLblFeedBack("Successfully analyzied the keys");
+			view.turnOnLblFeedBack();
 		} catch (TableFullException e1) {
+			view.turnOnLblFeedBack();
 			view.setLblFeedBack("Table size is too small!");
 		} catch (IOException e1) {
+			view.turnOnLblFeedBack();
 			view.setLblFeedBack("Templete file is missing! Please reinstall!");
 		}
 		
