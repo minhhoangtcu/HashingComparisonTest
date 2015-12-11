@@ -31,9 +31,9 @@ public class LinearProbingHashTable extends HashTable {
 		int collisions = 0;
 		while (values[pointer] != null && !values[pointer].equals(key)) {
 			pointer = (pointer + 1) % sizeOfTable;
-			collisions++;
 			if (pointer == index)
 				throw new TableFullException();
+			collisions++;
 		}
 		values[pointer] = key;
 		numberOfPairs++;
