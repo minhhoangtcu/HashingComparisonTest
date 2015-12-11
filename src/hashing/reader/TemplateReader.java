@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import hashing.gui.views.WelcomePage;
+
 public class TemplateReader {
 	
 	public enum Template {
@@ -14,7 +16,7 @@ public class TemplateReader {
 		FileReader htmlTemplateFile;
 		switch (type) {
 		case WELCOME_PAGE:
-			htmlTemplateFile = new FileReader("templates/WelcomeScreen.html");
+			htmlTemplateFile = new FileReader(WelcomePage.PATH);
 			break;
 		default:
 			htmlTemplateFile = null;

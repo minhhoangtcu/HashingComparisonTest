@@ -3,7 +3,7 @@ package hashing.resolutionMethods;
 public enum HashingResolutionMethod {
 	LINEAR_PROBING("Linear Probing"),
 	QUADRATIC_PROBING("Quadratic Probing"),
-	QOUTIENT("Qoutient");
+	LINEAR_QUOTIENT("Linear Quotient");
 	
 	private String name;
 	
