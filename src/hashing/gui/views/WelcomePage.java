@@ -2,6 +2,7 @@ package hashing.gui.views;
 
 import java.io.IOException;
 
+import hashing.gui.Model;
 import hashing.hashTables.HashTable;
 import hashing.hashTables.LinearProbingHashTable;
 import hashing.hashTables.LinearQuotientHashTable;
@@ -23,21 +24,21 @@ public class WelcomePage {
 	public static final String[] LINEAR_QUOTIENT_50_IDS = {"$lq50Collisions", "$lq50ComparisonsMissing", "$lq50ComparisonsPresent"};
 	public static final String[] LINEAR_QUOTIENT_90_IDS = {"$lq90Collisions", "$lq90ComparisonsMissing", "$lq90ComparisonsPresent"};
 	
-	public static String fillAll() throws IOException, TableFullException {
+	public static String fillAll(Model model) throws IOException, TableFullException {
 		String input = TemplateReader.read(Template.WELCOME_PAGE);
 		for (PackingDensity density: PackingDensity.values()) {
 			LinearProbingHashTable linearTable = new LinearProbingHashTable(density.getSize());
 			QuadraticProbingHashTable quadTable = new QuadraticProbingHashTable(density.getSize());
 			LinearQuotientHashTable quotTable = new LinearQuotientHashTable(density.getSize());
-			input = fillUpOneMethod(input, linearTable, density);
-			input = fillUpOneMethod(input, quadTable, density);
-			input = fillUpOneMethod(input, quotTable, density);
+			input = fillUpOneMethod(model, input, linearTable, density);
+			input = fillUpOneMethod(model, input, quadTable, density);
+			input = fillUpOneMethod(model, input, quotTable, density);
 		}
 		return input;
 	}
 	
-	public static String fillUpOneMethod(String input, HashTable table, PackingDensity density) throws IOException, TableFullException {
-		String[] randomKeys = AlphanumericReader.getKeys(AlphanumericReader.RANDOM);
+	public static String fillUpOneMethod(Model model, String input, HashTable table, PackingDensity density) throws IOException, TableFullException {
+		String[] randomKeys = model.getInsertingKeys();
 		int totalCollisions = 0;
 		for (String key : randomKeys) {
 			totalCollisions += table.put(key);
