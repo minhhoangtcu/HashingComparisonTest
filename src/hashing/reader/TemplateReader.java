@@ -4,12 +4,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import hashing.gui.views.IndividualPage;
 import hashing.gui.views.WelcomePage;
 
 public class TemplateReader {
 	
 	public enum Template {
 		WELCOME_PAGE,
+		INDIVIDUAL_PAGE;
 	}
 	
 	public static String read(Template type) throws IOException {
@@ -17,6 +19,9 @@ public class TemplateReader {
 		switch (type) {
 		case WELCOME_PAGE:
 			htmlTemplateFile = new FileReader(WelcomePage.PATH);
+			break;
+		case INDIVIDUAL_PAGE:
+			htmlTemplateFile = new FileReader(IndividualPage.PATH);
 			break;
 		default:
 			htmlTemplateFile = null;

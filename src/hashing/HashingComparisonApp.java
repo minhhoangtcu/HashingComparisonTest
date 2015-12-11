@@ -25,5 +25,4 @@ public class HashingComparisonApp {
 		control = new Control(model, view);
 		view.setPaneHTMLOutput(WelcomePage.fillAll());
 	}
-
 }
